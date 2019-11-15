@@ -7,19 +7,21 @@ const routes: Routes = [
     path: '',
     component: AppLayoutComponent,
     children: [
-      { 
-        path: '', 
+      {
+        path: '',
         loadChildren: () => import('./modules/sample/sample.module').then(m => m.SampleModule)
       },
+      {
+        path: '',
+        loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule)
+      }
     ]
   },
-  { 
-    path: '', 
-    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule) 
+  {
+    path: '',
+    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule)
   },
-  { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule) }
-]
-
+];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
